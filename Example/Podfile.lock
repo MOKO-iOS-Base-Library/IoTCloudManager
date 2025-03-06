@@ -1,27 +1,106 @@
 PODS:
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
-  - MKIotCloudManager (0.1.0)
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
+  - libxlsxwriter (1.2.0)
+  - Masonry (1.1.0)
+  - MKBaseModuleLibrary (2.0.9):
+    - MKBaseModuleLibrary/Base (= 2.0.9)
+    - MKBaseModuleLibrary/Category (= 2.0.9)
+    - MKBaseModuleLibrary/Defines (= 2.0.9)
+    - MKBaseModuleLibrary/Tools (= 2.0.9)
+  - MKBaseModuleLibrary/Base (2.0.9):
+    - MKBaseModuleLibrary/Base/Cell (= 2.0.9)
+    - MKBaseModuleLibrary/Base/Controller (= 2.0.9)
+    - MKBaseModuleLibrary/Base/NavigationController (= 2.0.9)
+    - MKBaseModuleLibrary/Base/View (= 2.0.9)
+  - MKBaseModuleLibrary/Base/Cell (2.0.9):
+    - MKBaseModuleLibrary/Base/Cell/MKBaseCell (= 2.0.9)
+  - MKBaseModuleLibrary/Base/Cell/MKBaseCell (2.0.9):
+    - Masonry
+    - MKBaseModuleLibrary/Defines
+  - MKBaseModuleLibrary/Base/Controller (2.0.9):
+    - MKBaseModuleLibrary/Category
+    - MKBaseModuleLibrary/Defines
+    - WRNavigationBar
+  - MKBaseModuleLibrary/Base/NavigationController (2.0.9)
+  - MKBaseModuleLibrary/Base/View (2.0.9):
+    - MKBaseModuleLibrary/Base/View/CollectionView (= 2.0.9)
+    - MKBaseModuleLibrary/Base/View/TableView (= 2.0.9)
+  - MKBaseModuleLibrary/Base/View/CollectionView (2.0.9)
+  - MKBaseModuleLibrary/Base/View/TableView (2.0.9)
+  - MKBaseModuleLibrary/Category (2.0.9):
+    - MKBaseModuleLibrary/Defines
+    - MKBaseModuleLibrary/Tools/MKClassInfo
+    - Toast
+  - MKBaseModuleLibrary/Defines (2.0.9)
+  - MKBaseModuleLibrary/Tools (2.0.9):
+    - MKBaseModuleLibrary/Tools/MKClassInfo (= 2.0.9)
+    - MKBaseModuleLibrary/Tools/MKDateFormatter (= 2.0.9)
+    - MKBaseModuleLibrary/Tools/MKExcelManager (= 2.0.9)
+  - MKBaseModuleLibrary/Tools/MKClassInfo (2.0.9)
+  - MKBaseModuleLibrary/Tools/MKDateFormatter (2.0.9)
+  - MKBaseModuleLibrary/Tools/MKExcelManager (2.0.9):
+    - libxlsxwriter
+    - MKBaseModuleLibrary/Defines
+    - SSZipArchive
+  - MKIotCloudManager (0.0.1):
+    - MKIotCloudManager/Config (= 0.0.1)
+    - MKIotCloudManager/MKNetwork (= 0.0.1)
+    - MKIotCloudManager/NetworkService (= 0.0.1)
+  - MKIotCloudManager/Config (0.0.1)
+  - MKIotCloudManager/MKNetwork (0.0.1):
+    - AFNetworking
+    - MKBaseModuleLibrary
+    - MKIotCloudManager/Config
+  - MKIotCloudManager/NetworkService (0.0.1):
+    - AFNetworking
+    - MKBaseModuleLibrary
+    - MKIotCloudManager/Config
+    - MKIotCloudManager/MKNetwork
+  - SSZipArchive (2.4.3)
+  - Toast (4.1.1)
+  - WRNavigationBar (1.4.0)
 
 DEPENDENCIES:
-  - FBSnapshotTestCase
   - MKIotCloudManager (from `../`)
 
 SPEC REPOS:
-  trunk:
-    - FBSnapshotTestCase
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - libxlsxwriter
+    - Masonry
+    - MKBaseModuleLibrary
+    - SSZipArchive
+    - Toast
+    - WRNavigationBar
 
 EXTERNAL SOURCES:
   MKIotCloudManager:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  MKIotCloudManager: 472d3cbd6a2c758f3473677b61b5e4e44508ade4
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
+  libxlsxwriter: cf3ad587bbd14911744323d7f51f6fd6660ed189
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MKBaseModuleLibrary: 2b79bcae588c755588413fbb643b510253271b23
+  MKIotCloudManager: faa51310ac3bf737d596a716ffc68cb96e77945a
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
+  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
+  WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
 
-PODFILE CHECKSUM: e591d29e5f4ee446dc8a4b9d3af8f19c98db7294
+PODFILE CHECKSUM: 7edd2ae8ee88dcadd0ee1237a3525631d0cd31f6
 
 COCOAPODS: 1.16.1

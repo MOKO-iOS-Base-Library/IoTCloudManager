@@ -10,6 +10,11 @@
 #endif
 #endif
 
+#import "MKUrlDefinition.h"
+#import "MKNetworkDefine.h"
+#import "MKNetworkingStatus.h"
+#import "MKBaseService.h"
+#import "MKNormalService.h"
 
 FOUNDATION_EXPORT double MKIotCloudManagerVersionNumber;
 FOUNDATION_EXPORT const unsigned char MKIotCloudManagerVersionString[];

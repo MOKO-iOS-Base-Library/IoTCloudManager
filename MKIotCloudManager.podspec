@@ -25,18 +25,32 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'lovexiaoxia' => 'aadyx2007@163.com' }
-  s.source           = { :git => 'git@github.com:MOKO-iOS-Base-Library/IoTCloudManager.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/MOKO-iOS-Base-Library/IoTCloudManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-
-  s.source_files = 'MKIotCloudManager/Classes/**/*'
+  s.ios.deployment_target = '14.0'
   
-  # s.resource_bundles = {
-  #   'MKIotCloudManager' => ['MKIotCloudManager/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'Config' do |ss|
+    ss.source_files = 'MKIotCloudManager/Classes/Config/**'
+  end
+  
+  s.subspec 'MKNetwork' do |ss|
+    ss.source_files = 'MKIotCloudManager/Classes/MKNetwork/**'
+    
+    ss.dependency 'MKIotCloudManager/Config'
+    
+    ss.dependency 'AFNetworking'
+    ss.dependency 'MKBaseModuleLibrary'
+  end
+  
+  s.subspec 'NetworkService' do |ss|
+    ss.source_files = 'MKIotCloudManager/Classes/NetworkService/**'
+        
+    ss.dependency 'MKIotCloudManager/Config'
+    ss.dependency 'MKIotCloudManager/MKNetwork'
+    
+    ss.dependency 'AFNetworking'
+    ss.dependency 'MKBaseModuleLibrary'
+  end
+  
 end
