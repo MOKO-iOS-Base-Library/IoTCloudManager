@@ -1,0 +1,22 @@
+{
+  "name": "MKIotCloudManager",
+  "version": "0.1.0",
+  "summary": "A short description of MKIotCloudManager.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/lovexiaoxia/MKIotCloudManager",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "lovexiaoxia": "aadyx2007@163.com"
+  },
+  "source": {
+    "git": "https://github.com/lovexiaoxia/MKIotCloudManager.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "MKIotCloudManager/Classes/**/*"
+}

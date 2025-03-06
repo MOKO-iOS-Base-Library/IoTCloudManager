@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - MKIotCloudManager (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - MKIotCloudManager (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  MKIotCloudManager:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  MKIotCloudManager: 472d3cbd6a2c758f3473677b61b5e4e44508ade4
+
+PODFILE CHECKSUM: e591d29e5f4ee446dc8a4b9d3af8f19c98db7294
+
+COCOAPODS: 1.16.1
