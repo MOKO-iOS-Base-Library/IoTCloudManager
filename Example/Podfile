@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+target 'MKIotCloudManager_Example' do
+  pod 'MKIotCloudManager', :path => '../'
+
+  target 'MKIotCloudManager_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
