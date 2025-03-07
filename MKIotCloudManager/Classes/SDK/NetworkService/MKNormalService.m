@@ -13,7 +13,7 @@
 
 #import "MKUrlDefinition.h"
 
-@implementation MKUserCreateDeviceModel
+@implementation MKUserCreateLoRaDeviceModel
 
 - (NSString *)valid {
     self.macAddress = [self.macAddress stringByReplacingOccurrencesOfString:@":" withString:@""];
@@ -113,11 +113,91 @@
 
 @end
 
+
+@implementation MKUserCreatScannerProDeviceModel
+
+- (NSString *)valid {
+    self.macAddress = [self.macAddress stringByReplacingOccurrencesOfString:@":" withString:@""];
+    if (![self.macAddress regularExpressions:isHexadecimal] || self.macAddress.length != 12) {
+        return @"Mac error";
+    }
+    self.macAddress = [self.macAddress lowercaseString];
+    
+    if (self.deviceType < 0 || self.deviceType > 8) {
+        return @"Device type error";
+    }
+    
+    if (!ValidStr(self.macName)) {
+        return @"Mac name cannot be empty";
+    }
+    
+    if (!ValidStr(self.publishTopic)) {
+        return @"PublishTopic cannot be empty";
+    }
+    
+    if (!ValidStr(self.subscribeTopic)) {
+        return @"SubscribeTopic cannot be empty";
+    }
+    
+    if (!ValidStr(self.lastWillTopic)) {
+        return @"LastWillTopic cannot be empty";
+    }
+    
+    return @"";
+}
+
+- (NSDictionary *)params {
+    NSString *valid = [self valid];
+    if (ValidStr(valid)) {
+        return @{
+            @"error":valid
+        };
+    }
+    NSString *model = @"10";
+    if (self.deviceType == 1) {
+        //MK107
+        model = @"20";
+    }else if (self.deviceType == 2) {
+        //MK110 Plus 01
+        model = @"40";
+    }else if (self.deviceType == 3) {
+        //MKGW-min3 20-D
+        model = @"11";
+    }else if (self.deviceType == 4) {
+        //MK107D Pro-35D
+        model = @"30";
+    }else if (self.deviceType == 5) {
+        //MK110 Plus 02
+        model = @"50";
+    }else if (self.deviceType == 6) {
+        //MK110 Plus 03
+        model = @"60";
+    }else if (self.deviceType == 7) {
+        //MKGW3
+        model = @"70";
+    }else if (self.deviceType == 8) {
+        //MKGW7
+        model = @"85";
+    }
+    return @{
+        @"lastWill":self.lastWillTopic,
+        @"mac":self.macAddress,
+        @"macName":self.macName,
+        @"model":model,
+        @"publishTopic":self.publishTopic,
+        @"subscribeTopic":self.subscribeTopic
+    };
+}
+
+@end
+
 @interface MKNormalService ()
 
 @property (nonatomic, strong)NSURLSessionDataTask *loginTask;
 
-@property (nonatomic, strong)NSURLSessionDataTask *addDeviceTask;
+@property (nonatomic, strong)NSURLSessionDataTask *addLoRaDeviceTask;
+
+@property (nonatomic, strong)NSURLSessionDataTask *addScannerProDeviceTask;
 
 @end
 
@@ -173,10 +253,10 @@
     }
 }
 
-- (void)addDeviceToCloud:(MKUserCreateDeviceModel *)deviceModel
-                   token:(NSString *)token
-                sucBlock:(MKNetworkRequestSuccessBlock)sucBlock
-               failBlock:(MKNetworkRequestFailureBlock)failBlock {
+- (void)addLoRaDeviceToCloud:(MKUserCreateLoRaDeviceModel *)deviceModel
+                       token:(NSString *)token
+                    sucBlock:(MKNetworkRequestSuccessBlock)sucBlock
+                   failBlock:(MKNetworkRequestFailureBlock)failBlock {
     if (!ValidStr(token)) {
         NSError *error = [self errorWithErrorInfo:@"You should login first"
                                            domain:@"addDeviceToCloud"
@@ -204,7 +284,7 @@
     
     NSString *urlString = (deviceModel.isHome ? MKRequstUrl(@"stage-api/mqtt/lora/createLoraFromApp") : MKTestRequstUrl(@"prod-api/mqtt/lora/createLoraFromApp"));
     @weakify(self);
-    self.addDeviceTask = [sessionManager POST:urlString parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    self.addLoRaDeviceTask = [sessionManager POST:urlString parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         @strongify(self);
         [self handleRequestSuccess:responseObject sucBlock:sucBlock failBlock:failBlock];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -213,9 +293,65 @@
     }];
 }
 
-- (void)cancelAddDevice {
-    if (self.addDeviceTask.state == NSURLSessionTaskStateRunning) { //如果要取消的请求正在运行中，才取消
-        [self.addDeviceTask cancel];
+- (void)cancelAddLoRaDevice {
+    if (self.addLoRaDeviceTask.state == NSURLSessionTaskStateRunning) { //如果要取消的请求正在运行中，才取消
+        [self.addLoRaDeviceTask cancel];
+    }
+}
+
+- (void)addScannerProDevicesToCloud:(NSArray <MKUserCreatScannerProDeviceModel *>*)deviceList
+                             isHome:(BOOL)isHome
+                              token:(NSString *)token
+                           sucBlock:(MKNetworkRequestSuccessBlock)sucBlock
+                          failBlock:(MKNetworkRequestFailureBlock)failBlock {
+    if (!ValidStr(token)) {
+        NSError *error = [self errorWithErrorInfo:@"You should login first"
+                                           domain:@"addDeviceToCloud"
+                                             code:RESULT_API_PARAMS_EMPTY];
+        if (failBlock) {
+            failBlock(error);
+        }
+        return;
+    }
+    
+    NSMutableArray *paramList = [NSMutableArray array];
+    
+    for (MKUserCreatScannerProDeviceModel *deviceModel in deviceList) {
+        NSDictionary *params = [deviceModel params];
+        if (ValidStr(params[@"error"])) {
+            NSError *error = [self errorWithErrorInfo:params[@"error"]
+                                               domain:@"addDeviceToCloud"
+                                                 code:RESULT_API_PARAMS_EMPTY];
+            if (failBlock) {
+                failBlock(error);
+            }
+            return;
+        }
+        [paramList addObject:params];
+    }
+    
+    
+    
+    AFHTTPSessionManager *sessionManager = [AFHTTPSessionManager manager];
+    sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    // 设置请求头
+    [sessionManager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [sessionManager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    
+    NSString *urlString = (isHome ? MKRequstUrl(@"stage-api/mqtt/mqttgateway/batchAdd") : MKTestRequstUrl(@"prod-api/mqtt/mqttgateway/batchAdd"));
+    @weakify(self);
+    self.addScannerProDeviceTask = [sessionManager POST:urlString parameters:paramList headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        @strongify(self);
+        [self handleRequestSuccess:responseObject sucBlock:sucBlock failBlock:failBlock];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        @strongify(self);
+        [self handleRequestFailed:error failBlock:failBlock];
+    }];
+}
+
+- (void)cancelAddScannerProDevice {
+    if (self.addScannerProDeviceTask.state == NSURLSessionTaskStateRunning) { //如果要取消的请求正在运行中，才取消
+        [self.addScannerProDeviceTask cancel];
     }
 }
 

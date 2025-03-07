@@ -15,6 +15,8 @@
 #import "MKNetworkingStatus.h"
 #import "MKBaseService.h"
 #import "MKNormalService.h"
+#import "MKIoTCloudAccountLoginAlertView.h"
+#import "MKIoTCloudExitAccountAlert.h"
 
 FOUNDATION_EXPORT double MKIotCloudManagerVersionNumber;
 FOUNDATION_EXPORT const unsigned char MKIotCloudManagerVersionString[];

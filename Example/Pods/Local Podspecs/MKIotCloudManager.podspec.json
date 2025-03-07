@@ -1,6 +1,6 @@
 {
   "name": "MKIotCloudManager",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "summary": "A short description of MKIotCloudManager.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager",
@@ -13,48 +13,87 @@
   },
   "source": {
     "git": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager.git",
-    "tag": "0.0.1"
+    "tag": "0.0.4"
   },
   "platforms": {
     "ios": "14.0"
   },
+  "resource_bundles": {
+    "MKIotCloudManager": [
+      "MKIotCloudManager/Assets/*.png"
+    ]
+  },
   "subspecs": [
     {
-      "name": "Config",
-      "source_files": "MKIotCloudManager/Classes/Config/**"
+      "name": "SDK",
+      "subspecs": [
+        {
+          "name": "Config",
+          "source_files": "MKIotCloudManager/Classes/SDK/Config/**"
+        },
+        {
+          "name": "MKNetwork",
+          "source_files": "MKIotCloudManager/Classes/SDK/MKNetwork/**",
+          "dependencies": {
+            "MKIotCloudManager/SDK/Config": [
+
+            ],
+            "AFNetworking": [
+
+            ],
+            "MKBaseModuleLibrary": [
+
+            ]
+          }
+        },
+        {
+          "name": "NetworkService",
+          "source_files": "MKIotCloudManager/Classes/SDK/NetworkService/**",
+          "dependencies": {
+            "MKIotCloudManager/SDK/Config": [
+
+            ],
+            "MKIotCloudManager/SDK/MKNetwork": [
+
+            ],
+            "AFNetworking": [
+
+            ],
+            "MKBaseModuleLibrary": [
+
+            ]
+          }
+        }
+      ]
     },
     {
-      "name": "MKNetwork",
-      "source_files": "MKIotCloudManager/Classes/MKNetwork/**",
-      "dependencies": {
-        "MKIotCloudManager/Config": [
+      "name": "View",
+      "subspecs": [
+        {
+          "name": "AccountLoginAlertView",
+          "source_files": "MKIotCloudManager/Classes/View/AccountLoginAlertView/**",
+          "dependencies": {
+            "MKBaseModuleLibrary": [
 
-        ],
-        "AFNetworking": [
+            ],
+            "MKCustomUIModule": [
 
-        ],
-        "MKBaseModuleLibrary": [
+            ]
+          }
+        },
+        {
+          "name": "ExitAccountAlertView",
+          "source_files": "MKIotCloudManager/Classes/View/ExitAccountAlertView/**",
+          "dependencies": {
+            "MKBaseModuleLibrary": [
 
-        ]
-      }
-    },
-    {
-      "name": "NetworkService",
-      "source_files": "MKIotCloudManager/Classes/NetworkService/**",
-      "dependencies": {
-        "MKIotCloudManager/Config": [
+            ],
+            "MKCustomUIModule": [
 
-        ],
-        "MKIotCloudManager/MKNetwork": [
-
-        ],
-        "AFNetworking": [
-
-        ],
-        "MKBaseModuleLibrary": [
-
-        ]
-      }
+            ]
+          }
+        }
+      ]
     }
   ]
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MKIotCloudManager'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'A short description of MKIotCloudManager.'
 
 # This description is used to generate tags and improve search results.
@@ -30,27 +30,52 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '14.0'
   
-  s.subspec 'Config' do |ss|
-    ss.source_files = 'MKIotCloudManager/Classes/Config/**'
+  s.resource_bundles = {
+    'MKIotCloudManager' => ['MKIotCloudManager/Assets/*.png']
+  }
+  
+  s.subspec 'SDK' do |ss|
+    ss.subspec 'Config' do |sss|
+      sss.source_files = 'MKIotCloudManager/Classes/SDK/Config/**'
+    end
+    
+    ss.subspec 'MKNetwork' do |sss|
+      sss.source_files = 'MKIotCloudManager/Classes/SDK/MKNetwork/**'
+      
+      sss.dependency 'MKIotCloudManager/SDK/Config'
+      
+      sss.dependency 'AFNetworking'
+      sss.dependency 'MKBaseModuleLibrary'
+    end
+    
+    ss.subspec 'NetworkService' do |sss|
+      sss.source_files = 'MKIotCloudManager/Classes/SDK/NetworkService/**'
+          
+      sss.dependency 'MKIotCloudManager/SDK/Config'
+      sss.dependency 'MKIotCloudManager/SDK/MKNetwork'
+      
+      sss.dependency 'AFNetworking'
+      sss.dependency 'MKBaseModuleLibrary'
+    end
   end
   
-  s.subspec 'MKNetwork' do |ss|
-    ss.source_files = 'MKIotCloudManager/Classes/MKNetwork/**'
+  s.subspec 'View' do |ss|
     
-    ss.dependency 'MKIotCloudManager/Config'
+    ss.subspec 'AccountLoginAlertView' do |sss|
+      sss.source_files = 'MKIotCloudManager/Classes/View/AccountLoginAlertView/**'
+      
+      sss.dependency 'MKBaseModuleLibrary'
+      sss.dependency 'MKCustomUIModule'
+    end
     
-    ss.dependency 'AFNetworking'
-    ss.dependency 'MKBaseModuleLibrary'
+    ss.subspec 'ExitAccountAlertView' do |sss|
+      sss.source_files = 'MKIotCloudManager/Classes/View/ExitAccountAlertView/**'
+      
+      sss.dependency 'MKBaseModuleLibrary'
+      sss.dependency 'MKCustomUIModule'
+    end
+    
   end
   
-  s.subspec 'NetworkService' do |ss|
-    ss.source_files = 'MKIotCloudManager/Classes/NetworkService/**'
-        
-    ss.dependency 'MKIotCloudManager/Config'
-    ss.dependency 'MKIotCloudManager/MKNetwork'
-    
-    ss.dependency 'AFNetworking'
-    ss.dependency 'MKBaseModuleLibrary'
-  end
   
 end
