@@ -17,6 +17,16 @@
 #import "MKCustomUIAdopter.h"
 
 @implementation MKIoTCloudAccountLoginAlertViewModel
+
+- (instancetype)init {
+    if (self = [super init]) {
+        self.accountPlaceholder = @"Account";
+        self.psdPlaceholder = @"Password";
+        self.isHome = YES;
+    }
+    return self;
+}
+
 @end
 
 
