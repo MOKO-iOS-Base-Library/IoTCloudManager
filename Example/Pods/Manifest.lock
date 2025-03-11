@@ -477,30 +477,30 @@ PODS:
     - MJRefresh
     - MKBaseModuleLibrary
     - MKCustomUIModule/View/MKTextField
-  - MKIotCloudManager (0.0.4):
-    - MKIotCloudManager/SDK (= 0.0.4)
-    - MKIotCloudManager/View (= 0.0.4)
-  - MKIotCloudManager/SDK (0.0.4):
-    - MKIotCloudManager/SDK/Config (= 0.0.4)
-    - MKIotCloudManager/SDK/MKNetwork (= 0.0.4)
-    - MKIotCloudManager/SDK/NetworkService (= 0.0.4)
-  - MKIotCloudManager/SDK/Config (0.0.4)
-  - MKIotCloudManager/SDK/MKNetwork (0.0.4):
+  - MKIotCloudManager (0.0.9):
+    - MKIotCloudManager/SDK (= 0.0.9)
+    - MKIotCloudManager/View (= 0.0.9)
+  - MKIotCloudManager/SDK (0.0.9):
+    - MKIotCloudManager/SDK/Config (= 0.0.9)
+    - MKIotCloudManager/SDK/MKNetwork (= 0.0.9)
+    - MKIotCloudManager/SDK/NetworkService (= 0.0.9)
+  - MKIotCloudManager/SDK/Config (0.0.9)
+  - MKIotCloudManager/SDK/MKNetwork (0.0.9):
     - AFNetworking
     - MKBaseModuleLibrary
     - MKIotCloudManager/SDK/Config
-  - MKIotCloudManager/SDK/NetworkService (0.0.4):
+  - MKIotCloudManager/SDK/NetworkService (0.0.9):
     - AFNetworking
     - MKBaseModuleLibrary
     - MKIotCloudManager/SDK/Config
     - MKIotCloudManager/SDK/MKNetwork
-  - MKIotCloudManager/View (0.0.4):
-    - MKIotCloudManager/View/AccountLoginAlertView (= 0.0.4)
-    - MKIotCloudManager/View/ExitAccountAlertView (= 0.0.4)
-  - MKIotCloudManager/View/AccountLoginAlertView (0.0.4):
+  - MKIotCloudManager/View (0.0.9):
+    - MKIotCloudManager/View/AccountLoginAlertView (= 0.0.9)
+    - MKIotCloudManager/View/ExitAccountAlertView (= 0.0.9)
+  - MKIotCloudManager/View/AccountLoginAlertView (0.0.9):
     - MKBaseModuleLibrary
     - MKCustomUIModule
-  - MKIotCloudManager/View/ExitAccountAlertView (0.0.4):
+  - MKIotCloudManager/View/ExitAccountAlertView (0.0.9):
     - MKBaseModuleLibrary
     - MKCustomUIModule
   - SSZipArchive (2.4.3)
@@ -537,7 +537,7 @@ SPEC CHECKSUMS:
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   MKBaseModuleLibrary: 2b79bcae588c755588413fbb643b510253271b23
   MKCustomUIModule: bbc862397ad4ffad0a88de756265a29aad5ddaab
-  MKIotCloudManager: 4dafb7feb73afd5090ab1da4f5024407432fda16
+  MKIotCloudManager: cd5646f03214da9028a63d827083ca92a097cb87
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

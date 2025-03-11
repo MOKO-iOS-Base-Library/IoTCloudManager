@@ -1,6 +1,6 @@
 {
   "name": "MKIotCloudManager",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "summary": "A short description of MKIotCloudManager.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager.git",
-    "tag": "0.0.4"
+    "tag": "0.0.9"
   },
   "platforms": {
     "ios": "14.0"
