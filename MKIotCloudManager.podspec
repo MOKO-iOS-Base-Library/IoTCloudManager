@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MKIotCloudManager'
-  s.version          = '0.0.9'
+  s.version          = '0.0.10'
   s.summary          = 'A short description of MKIotCloudManager.'
 
 # This description is used to generate tags and improve search results.
@@ -44,7 +44,6 @@ TODO: Add long description of the pod here.
       
       sss.dependency 'MKIotCloudManager/SDK/Config'
       
-      sss.dependency 'AFNetworking'
       sss.dependency 'MKBaseModuleLibrary'
     end
     
@@ -54,7 +53,6 @@ TODO: Add long description of the pod here.
       sss.dependency 'MKIotCloudManager/SDK/Config'
       sss.dependency 'MKIotCloudManager/SDK/MKNetwork'
       
-      sss.dependency 'AFNetworking'
       sss.dependency 'MKBaseModuleLibrary'
     end
   end

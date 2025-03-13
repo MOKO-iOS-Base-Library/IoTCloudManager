@@ -1,6 +1,6 @@
 {
   "name": "MKIotCloudManager",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "summary": "A short description of MKIotCloudManager.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MOKO-iOS-Base-Library/IoTCloudManager.git",
-    "tag": "0.0.9"
+    "tag": "0.0.10"
   },
   "platforms": {
     "ios": "14.0"
@@ -38,9 +38,6 @@
             "MKIotCloudManager/SDK/Config": [
 
             ],
-            "AFNetworking": [
-
-            ],
             "MKBaseModuleLibrary": [
 
             ]
@@ -54,9 +51,6 @@
 
             ],
             "MKIotCloudManager/SDK/MKNetwork": [
-
-            ],
-            "AFNetworking": [
 
             ],
             "MKBaseModuleLibrary": [
