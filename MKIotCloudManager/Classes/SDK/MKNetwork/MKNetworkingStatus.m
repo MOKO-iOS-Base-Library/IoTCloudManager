@@ -12,6 +12,8 @@
 #import <netinet/in.h>
 #import <arpa/inet.h>
 
+#import "MKMacroDefines.h"
+
 NSString *const MKNetworkingStatusChangedNotification = @"MKNetworkingStatusChangedNotification";
 
 @interface MKNetworkingStatus ()
@@ -90,7 +92,9 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
     MKNetworkReachabilityStatus status = [self networkStatusForFlags:flags];
     if (self.currentNetStatus != status) {
         self.currentNetStatus = status;
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKNetworkingStatusChangedNotification object:nil];
+        moko_dispatch_main_safe(^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:MKNetworkingStatusChangedNotification object:nil];
+        });
     }
 }
 

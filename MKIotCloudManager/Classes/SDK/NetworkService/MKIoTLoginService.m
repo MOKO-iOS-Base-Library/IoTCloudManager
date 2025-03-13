@@ -36,24 +36,28 @@
                  sucBlock:(MKNetworkRequestSuccessBlock)sucBlock
                 failBlock:(MKNetworkRequestFailureBlock)failBlock {
     if (!ValidStr(username) || !ValidStr(password)) {
-        NSError *error = [self errorWithErrorInfo:@"Username and password cannot be empty"
-                                           domain:@"login"
-                                             code:RESULT_API_PARAMS_EMPTY];
-        if (failBlock) {
-            failBlock(error);
-        }
+        moko_dispatch_main_safe(^{
+            NSError *error = [self errorWithErrorInfo:@"Username and password cannot be empty"
+                                               domain:@"login"
+                                                 code:RESULT_API_PARAMS_EMPTY];
+            if (failBlock) {
+                failBlock(error);
+            }
+        });
         return;
     }
     // 创建 URL
     NSString *urlString = (isHome ? MKRequstUrl(@"stage-api/auth/login") : MKTestRequstUrl(@"prod-api/auth/login"));
     NSURL *url = [NSURL URLWithString:urlString];
     if (!url) {
-        NSError *error = [self errorWithErrorInfo:@"Invalid URL"
-                                           domain:@"login"
-                                             code:RESULT_API_PARAMS_EMPTY];
-        if (failBlock) {
-            failBlock(error);
-        }
+        moko_dispatch_main_safe(^{
+            NSError *error = [self errorWithErrorInfo:@"Invalid URL"
+                                               domain:@"login"
+                                                 code:RESULT_API_PARAMS_EMPTY];
+            if (failBlock) {
+                failBlock(error);
+            }
+        });
         return;
     }
 
@@ -71,9 +75,11 @@
     NSError *jsonError;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&jsonError];
     if (jsonError) {
-        if (failBlock) {
-            failBlock(jsonError);
-        }
+        moko_dispatch_main_safe(^{
+            if (failBlock) {
+                failBlock(jsonError);
+            }
+        });
         return;
     }
     request.HTTPBody = jsonData;
