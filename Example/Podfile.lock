@@ -461,28 +461,28 @@ PODS:
     - MKBaseModuleLibrary
     - MKCustomUIModule/View/MKTextField
     - SVProgressHUD
-  - MKIotCloudManager (0.0.10):
-    - MKIotCloudManager/SDK (= 0.0.10)
-    - MKIotCloudManager/View (= 0.0.10)
-  - MKIotCloudManager/SDK (0.0.10):
-    - MKIotCloudManager/SDK/Config (= 0.0.10)
-    - MKIotCloudManager/SDK/MKNetwork (= 0.0.10)
-    - MKIotCloudManager/SDK/NetworkService (= 0.0.10)
-  - MKIotCloudManager/SDK/Config (0.0.10)
-  - MKIotCloudManager/SDK/MKNetwork (0.0.10):
+  - MKIotCloudManager (0.0.12):
+    - MKIotCloudManager/SDK (= 0.0.12)
+    - MKIotCloudManager/View (= 0.0.12)
+  - MKIotCloudManager/SDK (0.0.12):
+    - MKIotCloudManager/SDK/Config (= 0.0.12)
+    - MKIotCloudManager/SDK/MKNetwork (= 0.0.12)
+    - MKIotCloudManager/SDK/NetworkService (= 0.0.12)
+  - MKIotCloudManager/SDK/Config (0.0.12)
+  - MKIotCloudManager/SDK/MKNetwork (0.0.12):
     - MKBaseModuleLibrary
     - MKIotCloudManager/SDK/Config
-  - MKIotCloudManager/SDK/NetworkService (0.0.10):
+  - MKIotCloudManager/SDK/NetworkService (0.0.12):
     - MKBaseModuleLibrary
     - MKIotCloudManager/SDK/Config
     - MKIotCloudManager/SDK/MKNetwork
-  - MKIotCloudManager/View (0.0.10):
-    - MKIotCloudManager/View/AccountLoginAlertView (= 0.0.10)
-    - MKIotCloudManager/View/ExitAccountAlertView (= 0.0.10)
-  - MKIotCloudManager/View/AccountLoginAlertView (0.0.10):
+  - MKIotCloudManager/View (0.0.12):
+    - MKIotCloudManager/View/AccountLoginAlertView (= 0.0.12)
+    - MKIotCloudManager/View/ExitAccountAlertView (= 0.0.12)
+  - MKIotCloudManager/View/AccountLoginAlertView (0.0.12):
     - MKBaseModuleLibrary
     - MKCustomUIModule
-  - MKIotCloudManager/View/ExitAccountAlertView (0.0.10):
+  - MKIotCloudManager/View/ExitAccountAlertView (0.0.12):
     - MKBaseModuleLibrary
     - MKCustomUIModule
   - SSZipArchive (2.4.3)
@@ -496,7 +496,7 @@ DEPENDENCIES:
   - MKIotCloudManager (from `../`)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - CircleProgressBar
     - libxlsxwriter
     - Masonry
@@ -519,12 +519,12 @@ SPEC CHECKSUMS:
   MJRefresh: ff9e531227924c84ce459338414550a05d2aea78
   MKBaseModuleLibrary: 2b79bcae588c755588413fbb643b510253271b23
   MKCustomUIModule: 2b04f12e951fc5905074d0d7baead6ee1c24abc8
-  MKIotCloudManager: ee75562450ff0b81d5d3829c634f7178b7e72250
+  MKIotCloudManager: 241bd4bb7fae48e6b031c69a40c26637aabe67be
   SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10
 
-PODFILE CHECKSUM: 7edd2ae8ee88dcadd0ee1237a3525631d0cd31f6
+PODFILE CHECKSUM: cdbb2f54cf3294dbaf08e750cb2a8701e9a21bd9
 
-COCOAPODS: 1.16.1
+COCOAPODS: 1.16.2
