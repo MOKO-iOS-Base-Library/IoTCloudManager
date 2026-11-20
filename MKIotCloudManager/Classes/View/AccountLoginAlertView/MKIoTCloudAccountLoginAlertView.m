@@ -252,8 +252,8 @@ static CGFloat const alertViewHeight = 230.f;
 }
 
 - (void)uploadEnvIcon {
-    self.cloudBtn.icon.image = ((self.envType == 0) ? LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnSelectedIcon.png") : LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnUnselectedIcon.png"));
-    self.testBtn.icon.image = ((self.envType == 1) ? LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnSelectedIcon.png") : LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnUnselectedIcon.png"));
+    self.cloudBtn.icon.image = ((self.envType == 0) ? LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnSelectedIcon@2x.png") : LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnUnselectedIcon@2x.png"));
+    self.testBtn.icon.image = ((self.envType == 1) ? LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnSelectedIcon@2x.png") : LOADICON(@"MKIotCloudManager", @"MKIoTCloudAccountLoginAlertView", @"mk_envirnmentnUnselectedIcon@2x.png"));
 }
 
 #pragma mark - getter
